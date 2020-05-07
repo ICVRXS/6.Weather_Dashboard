@@ -1,0 +1,26 @@
+* {
+    font-family: 'Comfortaa', cursive;
+}
+
+body {
+    margin: 50px 200px;
+    background-color: lightgray;
+}
+
+body #content-box {
+    background-color: whitesmoke;
+    padding: 0px;
+}
+
+#main-content {
+    margin: 2%
+}
+
+#five-day {
+    justify-content: right;
+}
+
+.footer {
+    background-color: #343a40;
+    padding: 15px;
+}

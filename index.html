@@ -4,48 +4,89 @@
 <head>
     <title>Weather Dashboard</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container" id="navbar">
-        <div class="row">
-            <div class="col-md-12">
-                <input type="search" name="City Search" id="search-input">
-                <button id="search-button">search</button>
-            </div>
+    <main class="container" id="content-box">
+        <div id="navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#"><i class="fas fa-sun"></i> Your Weather Dashboard</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav mr-auto"></div>
+                    <div class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" name="City Search" id="search-input" aria-label="Search" placeholder="Search for a city">
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="search-button">Search</button>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <ul class="list-group">
-                    <li class="list-group-item active">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
+        <div class="container" id="main-content">
+            <div class="row">
+                <div class="col-md-2">
+                    <ul class="list-group" id="cities-list">
+                        <li class="list-group-item active" id="city-1">City 1</li>
+                        <li class="list-group-item" id="city-2"> City 2</li>
+                        <li class="list-group-item" id="city-3">City 3</li>
+                        <li class="list-group-item" id="city-4">City 4</li>
+                        <li class="list-group-item" id="city-5">City 5</li>
+                    </ul>
+                </div>
+                <div class="card" id="main-card">
+                    <div class="card-header" id="city-name">
+                    City Name and date
+                    </div>
+                    <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>list weather metrics here</p>
+                    </blockquote>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-10">
-                <div class="media">
-                    <div class="media-body">
-                    <h5 class="mt-0">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <div class="row" id="five-day">
+                <div class="card col-md-2" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">Date</h5>
+                    <p class="card-text">Temp</p>
+                    <p class="card-text">Humidity</p>
+                    </div>
+                </div>
+                <div class="card col-md-2" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">Date</h5>
+                    <p class="card-text">Temp</p>
+                    <p class="card-text">Humidity</p>
+                    </div>
+                </div>
+                <div class="card col-md-2" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">Date</h5>
+                    <p class="card-text">Temp</p>
+                    <p class="card-text">Humidity</p>
+                    </div>
+                </div>
+                <div class="card col-md-2" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">Date</h5>
+                    <p class="card-text">Temp</p>
+                    <p class="card-text">Humidity</p>
+                    </div>
+                </div>
+                <div class="card col-md-2" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">Date</h5>
+                    <p class="card-text">Temp</p>
+                    <p class="card-text">Humidity</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div id="city-name"></div>
-            </div>
-        </div>
-    </div>
-    
-    
+        <div class="footer"></div>
+    </main>
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="resources/script.js"></script>
 </body>
