@@ -59,5 +59,3 @@ function fetchCityData(cityName) {
         renderCityData(cityName);
     });
 }
-
-// renderCityData();
