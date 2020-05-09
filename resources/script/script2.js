@@ -31,8 +31,6 @@ if (!cities) {
 //pushes search query through each ajax call
 function searchWeather(city) {
     fetchWeather(city);
-    // fetchUV(city);
-    // fetchForecast(city);
     addNewCity(city);
 }
 
@@ -73,6 +71,13 @@ function fetchWeather(city) {
         }).then(function (response) {
             console.log(response);
             cityUv.text(response.current.uvi);
+            if (cityUv.val() < 4){
+                cityUv.css("background-color", "green");
+            }else if(cityUv.val() > 7){
+                cityUv.css("background-color", "red");
+            }else{
+                cityUv.css("background-color", "yellow");
+            }
         });
     });
 }
