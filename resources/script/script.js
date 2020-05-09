@@ -1,4 +1,5 @@
-var citiesStore = JSON.parse(localStorage.getItem("weatherByCity"));
+var cacheKey = "knownCities";
+var citiesStore = JSON.parse(localStorage.getItem(cacheKey));
 
 $("#search-button").on("click", function(){
     var citySearch = $("#search-input").val();
@@ -54,8 +55,10 @@ function fetchCityData(cityName) {
     }).then(function (response) {
         console.log(response);
         citiesStore[cityName] = {
-            name: response.name
+            name: response.name,
+            temp: response.main.temp
         };
+        localStorage.setItem(cacheKey, JSON.stringify(citiesStore));
         renderCityData(cityName);
     });
 }
