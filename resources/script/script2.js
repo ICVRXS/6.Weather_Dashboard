@@ -1,12 +1,17 @@
 console.log("start weather app");
 
 var cacheKey = "knownCities";
+var cityName = $("#city-name");
+var cityTemp = $("#temp");
+var cityHumid = $("#humid");
+var cityWind = $("#wind");
+var cityUv = $("#uv-index");
 
+//captures search query
 $("#search-button").on("click", function(){
     var citySearch = $("#search-input").val();
     $("#search-input").val("");
     searchWeather(citySearch);
-    console.log(cities);
 })
 
 $("#search-input").on("keypress", function(e) {
@@ -14,10 +19,8 @@ $("#search-input").on("keypress", function(e) {
         var citySearch = $("#search-input").val();
         $("#search-input").val("");
         searchWeather(citySearch);
-        console.log(cities);
     }
 })
-
 
 //gets starting data from local storage, if there is any
 var cities = JSON.parse(localStorage.getItem(cacheKey));
@@ -27,9 +30,11 @@ if (!cities){
     cities = [];
 }
 
-//captures search input on page
+//pushes search query through each ajax call
 function searchWeather(city){
     fetchWeather(city);
+    fetchUV(city);
+    fetchForecast(city);
     addNewCity(city);
 }
 
@@ -39,7 +44,33 @@ function fetchWeather(city) {
         q: city,
         appid: "9fc203891252cc2336158c490f709da2"
     });
-    var queryUrl = "http://api.openweathermap.org/data/2.5/weather?" + queryParams;
+    var queryUrl = "http://api.openweathermap.org/data/2.5/weather?" + queryParams + "&units=imperial";
+
+    console.log(queryUrl);
+
+    $.ajax({
+        url: queryUrl,
+        method: "GET",
+    }).then(function (response) {
+        console.log(response);
+        var cityTempF = $("#deg").text("°F");
+        var cityHumidPercent = $("#percent").text("%");
+        var cityWindSpeed = $("#mph").text("mph");
+
+        cityName.text(response.name);
+        cityTemp.text(response.main.temp).append(cityTempF);
+        cityHumid.text(response.main.humidity).append(cityHumidPercent);
+        cityWind.text(response.wind.speed).append(cityWindSpeed);
+    });
+}
+
+//get UV index from API
+function fetchUV(latitude, longitude) {
+    var queryParams = $.param({
+        q: "lat=" + latitude + "&lon=" + longitude,
+        appid: "9fc203891252cc2336158c490f709da2"
+    });
+    var queryUrl = "http://api.openweathermap.org/data/2.5/uvi?" + queryParams + "&units=imperial";
 
     console.log(queryUrl);
 
@@ -51,16 +82,6 @@ function fetchWeather(city) {
     });
 }
 
-//render weather to HTML
-function displayWeather(cityData) {
-    
-}
-
-//get UV index from API
-function fetchUV(city) {
-    
-}
-
 //render UV index to HTML
 function displayUV(cityData) {
     
@@ -68,7 +89,20 @@ function displayUV(cityData) {
 
 //get 5 day forecast from API
 function fetchForecast(city) {
-    
+    var queryParams = $.param({
+        q: city,
+        appid: "9fc203891252cc2336158c490f709da2"
+    });
+    var queryUrl = "http://api.openweathermap.org/data/2.5/forecast?" + queryParams + "&units=imperial";
+
+    console.log(queryUrl);
+
+    $.ajax({
+        url: queryUrl,
+        method: "GET",
+    }).then(function (response) {
+        console.log(response);
+    });
 }
 
 //render 5 day forecast to HTML
