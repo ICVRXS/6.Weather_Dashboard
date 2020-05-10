@@ -5,7 +5,9 @@ var cityHumid = $("#humid");
 var cityWind = $("#wind");
 var cityUv = $("#uv-index");
 var currentDay = $("#currentDay");
-var date = moment(new Date()).format(" dddd, MMMM Do, YYYY");
+var date = moment(new Date()).format(" (dddd, MMMM Do, YYYY)");
+var fiveDayDate = moment().add(nextDay, 'days').format("M/D/YY");
+var nextDay = 1;
 
 //captures search query
 $("#search-button").on("click", function () {
@@ -78,6 +80,9 @@ function fetchWeather(city) {
                 function renderFiveDay(){
                     $("#5-day-temp-"+i).text(response.daily[i].temp.day);
                     $("#5-day-humid-"+i).text(response.daily[i].humidity);
+                    $("#5-day-date-"+i).text(fiveDayDate);
+                    parseInt(nextDay)+1;
+                    console.log(nextDay);
                 }
                 renderFiveDay();
                 cityUv.text(response.current.uvi);
