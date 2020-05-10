@@ -70,10 +70,19 @@ function fetchWeather(city) {
             method: "GET",
         }).then(function (response) {
             console.log(response);
-            cityUv.text(response.current.uvi);
-            if (cityUv.val() < 4){
+            // var fiveDayTemp = $(".5-day-deg").text("°F");
+            // var fiveDayPercent = $(".5-day-percent").text("%");
+            for (let i = 0; i < 5; i++){
+                function renderFiveDay(){
+                    $("#5-day-temp-"+i).text(response.daily[i].temp.day);
+                    $("#5-day-humid-"+i).text(response.daily[i].humidity);
+                }
+                renderFiveDay();
+                cityUv.text(response.current.uvi);
+            }
+            if (response.current.uvi < 4){
                 cityUv.css("background-color", "green");
-            }else if(cityUv.val() > 7){
+            }else if(response.current.uvi > 7){
                 cityUv.css("background-color", "red");
             }else{
                 cityUv.css("background-color", "yellow");
