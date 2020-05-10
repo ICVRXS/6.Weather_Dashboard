@@ -4,6 +4,8 @@ var cityTemp = $("#temp");
 var cityHumid = $("#humid");
 var cityWind = $("#wind");
 var cityUv = $("#uv-index");
+var currentDay = $("#currentDay");
+var date = moment(new Date()).format(" dddd, MMMM Do, YYYY");
 
 //captures search query
 $("#search-button").on("click", function () {
@@ -55,7 +57,7 @@ function fetchWeather(city) {
         var latitude = response.coord.lat;
         var longitude = response.coord.lon;
 
-        cityName.text(response.name);
+        cityName.text(response.name).append(date);
         cityTemp.text(response.main.temp).append(cityTempF);
         cityHumid.text(response.main.humidity).append(cityHumidPercent);
         cityWind.text(response.wind.speed).append(cityWindSpeed);
