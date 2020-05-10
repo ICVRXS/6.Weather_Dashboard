@@ -6,8 +6,7 @@ var cityWind = $("#wind");
 var cityUv = $("#uv-index");
 var currentDay = $("#currentDay");
 var date = moment(new Date()).format(" (dddd, MMMM Do, YYYY)");
-var fiveDayDate = moment().add(nextDay, 'days').format("M/D/YY");
-var nextDay = 1;
+var fiveDayDate = moment().add(1, 'days').format("M/D/YY");
 
 //captures search query
 $("#search-button").on("click", function () {
@@ -15,7 +14,6 @@ $("#search-button").on("click", function () {
     $("#search-input").val("");
     searchWeather(citySearch);
 })
-
 $("#search-input").on("keypress", function (e) {
     if (e.keyCode === 13) {
         var citySearch = $("#search-input").val();
@@ -32,7 +30,15 @@ if (!cities) {
     cities = [];
 }
 
-//pushes search query through each ajax call
+//adds searches to history
+function addCity(cities){
+    for (let i = 0; i < cities.length; i++){
+        $("#city-"+[i]).text(cities[i]);
+    }
+    $(".list-group-item").on("click", fetchWeather());
+}
+
+//pushes search query through each ajax call renders resutlts to HTML
 function searchWeather(city) {
     fetchWeather(city);
     addNewCity(city);
@@ -81,8 +87,6 @@ function fetchWeather(city) {
                     $("#5-day-temp-"+i).text(response.daily[i].temp.day);
                     $("#5-day-humid-"+i).text(response.daily[i].humidity);
                     $("#5-day-date-"+i).text(fiveDayDate);
-                    parseInt(nextDay)+1;
-                    console.log(nextDay);
                 }
                 renderFiveDay();
                 cityUv.text(response.current.uvi);
@@ -105,3 +109,5 @@ function addNewCity(city) {
         localStorage.setItem(cacheKey, JSON.stringify(cities));
     }
 }
+
+addCity(cities);
