@@ -31,12 +31,21 @@ if (!cities) {
 }
 
 //adds searches to history
-function addCity(cities){
+function renderCitiesButton(cities){
+    $("#cities-list").empty();
     for (let i = 0; i < cities.length; i++){
         $("#city-"+[i]).text(cities[i]);
+        var citiesListItem = $("<li class=\"list-group-item\"><button>"+cities[i]+"</button></li>");
+        citiesListItem.children().data("cityData", cities[i]);
+        $("#cities-list").append(citiesListItem);
     }
-    $(".list-group-item").on("click", fetchWeather());
 }
+
+//Adds click event to search history to pass it through search
+$("#cities-list").on("click", "button", function(){
+    var buttonSearch = $(this).data("cityData");
+    fetchWeather(buttonSearch);
+});
 
 //pushes search query through each ajax call renders resutlts to HTML
 function searchWeather(city) {
@@ -108,6 +117,7 @@ function addNewCity(city) {
         cities.push(city);
         localStorage.setItem(cacheKey, JSON.stringify(cities));
     }
+    renderCitiesButton(cities);
 }
 
-addCity(cities);
+renderCitiesButton(cities);
