@@ -1,1 +1,6 @@
 # 6.Weather_Dashboard
+
+A weather dashboard to give you current temps, conditions, etc. of whatever city you search along with the 5 day forecast of that area.
+
+This project had its ups and downs during development. I started with a basic HTML and CSS to get the layout down. Having a visual reference for what was going where helped to plug the functionality in. Getting the ajax call functioning and grabbing the information from the response was simple enough until I realized I needed to use the coordinates for the UV index and 5 day forecast. I orginally tried making each ajax call a separate function, but passing the response from one function with an ajax call, to then become the parameters of a different ajax call nested within another function proved difficult. I eventually nested the second ajax call within the first which made it easier to use the lat and lon responses for the query parameters in the second call, as I didn't need to pass them through another function.
+For a time I got stuck on getting the 5 day forecast to display the correct day's forecast, as well as the correct date, and this issue got put on the backburner as I worked on another project. I did eventually figure it out with some help from our instructor. 

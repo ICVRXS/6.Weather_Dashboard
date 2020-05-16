@@ -1,35 +1,34 @@
 * {
-    font-family: 'Comfortaa', cursive;
+  font-family: "Comfortaa", cursive;
 }
 
 body {
-    margin: 50px 200px;
-    background-image: url("cloudyBG.jpeg");
-    background-color: #cccccc;
+  margin: 50px 200px;
+  background-image: url("cloudyBG.jpeg");
+  background-color: #cccccc;
 }
 
 body #content-box {
-    background-color: rgba(247, 247, 241, 0.9);
-    padding: 0px;
+  background-color: rgba(247, 247, 241, 0.9);
+  padding: 0px;
 }
 
 #main-content {
-    margin-top: 2%;
-    margin-bottom: 2%;
-
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 #five-day {
-    margin-top: 2%;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer {
-    background-color: #343a40;
-    padding: 15px;
+  background-color: #343a40;
+  padding: 15px;
 }
 
 #current-weather {
-    list-style-type: none;
+  list-style-type: none;
 }
