@@ -61,7 +61,7 @@ function fetchWeather(city) {
     appid: "9fc203891252cc2336158c490f709da2",
   });
   var queryUrl =
-    "http://api.openweathermap.org/data/2.5/weather?" +
+    "https://api.openweathermap.org/data/2.5/weather?" +
     queryParams +
     "&units=imperial";
 
@@ -82,7 +82,7 @@ function fetchWeather(city) {
 
     //get UV index and 5 day forecast using lat/lon coordinates from first ajax response
     var queryTwoUrl =
-      "http://api.openweathermap.org/data/2.5/onecall?lat=" +
+      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
       latitude +
       "&lon=" +
       longitude +
